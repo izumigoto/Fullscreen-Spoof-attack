@@ -13,6 +13,7 @@
             overflow: hidden;
             background: white;
             text-align: center;
+            font-family: sans-serif;
         }
         #fake-ui {
             position: absolute;
@@ -22,15 +23,38 @@
             background: #f1f1f1;
             padding: 10px;
             font-size: 18px;
-            font-family: sans-serif;
         }
         #fake-ui span {
             color: green;
         }
-        iframe {
+        #login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        #login-box input {
             width: 100%;
-            height: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #login-box button {
+            width: 100%;
+            padding: 10px;
+            background: blue;
+            color: white;
             border: none;
+            margin-top: 10px;
+        }
+        #warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
         }
     </style>
     <script>
@@ -46,13 +70,13 @@
     </script>
 </head>
 <body onload="setTimeout(enterFullscreen, 2000)">
-
     <div id="fake-ui">🔒 <span>https://secure-bank.com</span></div>
-    <iframe src="https://example.com"></iframe>
-
-    <div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;text-align:center;padding-top:50%;">
-        Click to continue...
+    <div id="login-box">
+        <h3>Login to Secure Bank</h3>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Login</button>
+        <div id="warning">Don't get spoofed</div>
     </div>
-
 </body>
 </html>
